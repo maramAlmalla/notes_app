@@ -1,32 +1,35 @@
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
-
+  const CustomAppBar({super.key, required this.title, required this.icon});
+  final String title;
+  final IconData icon;
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       children: [
-        SizedBox(
+        const SizedBox(
           width: 16,
         ),
         Text(
-          'Notes',
-          style: TextStyle(
+          title,
+          style: const TextStyle(
             color: Colors.white,
             fontSize: 28,
           ),
         ),
         Spacer(),
-        CustomSearchButton(),
+        CustomSearchButton(
+          icon: icon,
+        ),
       ],
     );
   }
 }
 
 class CustomSearchButton extends StatelessWidget {
-  const CustomSearchButton({super.key});
-
+  const CustomSearchButton({super.key, required this.icon});
+  final IconData icon;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -38,9 +41,9 @@ class CustomSearchButton extends StatelessWidget {
           color: Colors.white.withOpacity(.05),
           borderRadius: BorderRadius.circular(16),
         ),
-        child: const Center(
+        child: Center(
           child: Icon(
-            Icons.search,
+            icon,
             color: Colors.white,
           ),
         ),
