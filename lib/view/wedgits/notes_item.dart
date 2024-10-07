@@ -27,7 +27,7 @@ class NotesItem extends StatelessWidget {
               child: Text(
                 'Build your Career with   Maram Almalla',
                 style: TextStyle(
-                    color: Colors.black.withOpacity(.4), fontSize: 22),
+                    color: Colors.black.withOpacity(.4), fontSize: 18),
               ),
             ),
             trailing: Icon(
