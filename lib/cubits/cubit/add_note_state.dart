@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+part of 'add_note_cubit.dart';
 
 @immutable
-class AddNoteState {}
+abstract class AddNoteState {}
 
 class AddNoteInitial extends AddNoteState {}
 
@@ -10,7 +10,7 @@ class AddNoteLoading extends AddNoteState {}
 class AddNoteSuccess extends AddNoteState {}
 
 class AddNoteFailure extends AddNoteState {
-  final String errMessage;
+  final String errMessages;
 
-  AddNoteFailure(this.errMessage);
+  AddNoteFailure(this.errMessages);
 }
