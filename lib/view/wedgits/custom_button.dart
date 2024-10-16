@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/view/wedgits/constant.dart';
 
+@immutable
 class CustomButton extends StatelessWidget {
-  CustomButton(
+  const CustomButton(
       {super.key, this.onTap, required this.text, this.isLoading = false});
-  VoidCallback? onTap;
-  String text;
+  final VoidCallback? onTap;
+  final String text;
   final bool isLoading;
   @override
   Widget build(BuildContext context) {
