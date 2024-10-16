@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/cubits/notes_cubit/notes_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/view/wedgits/custom_app_bar.dart';
 import 'package:notes_app/view/wedgits/custom_text_field.dart';
@@ -27,6 +29,8 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
                 widget.note.title = title ?? widget.note.title;
                 widget.note.subTitle = title ?? widget.note.subTitle;
                 widget.note.save();
+                BlocProvider.of<NotesCubit>(context).fetchAllNotes();
+                Navigator.pop(context);
               },
               title: 'Edit Note',
               icon: Icons.check),
@@ -37,7 +41,7 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
               onchanged: (value) {
                 title = value;
               },
-              hint: 'title'),
+              hint: widget.note.title),
           const SizedBox(
             height: 16,
           ),
@@ -45,7 +49,7 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
             onchanged: (value) {
               content = value;
             },
-            hint: 'Content',
+            hint: widget.note.subTitle,
             maxLines: 5,
           )
         ],
