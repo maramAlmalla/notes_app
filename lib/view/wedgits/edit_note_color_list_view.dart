@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/view/wedgits/color_Item.dart';
 import 'package:notes_app/view/wedgits/constant.dart';
 
 class EditNoteColorListView extends StatefulWidget {
-  const EditNoteColorListView({super.key});
-
+  const EditNoteColorListView({super.key, required this.note});
+  final NoteModel note;
   @override
   State<EditNoteColorListView> createState() => _EditNoteColorListViewState();
 }
 
 class _EditNoteColorListViewState extends State<EditNoteColorListView> {
-  int currentIndex = 0;
+  late int currentIndex;
+
+  @override
+  void initState() {
+    currentIndex = KColors.indexOf(Color(widget.note.color));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -25,6 +33,7 @@ class _EditNoteColorListViewState extends State<EditNoteColorListView> {
                 onTap: () {
                   currentIndex = index;
 
+                  widget.note.color = KColors[index].value;
                   setState(() {});
                 },
                 child: ColorItem(

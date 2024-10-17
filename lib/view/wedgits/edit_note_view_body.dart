@@ -60,7 +60,9 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
           const SizedBox(
             height: 16,
           ),
-          const EditNoteColorListView(),
+          EditNoteColorListView(
+            note: widget.note,
+          ),
         ],
       ),
     );
